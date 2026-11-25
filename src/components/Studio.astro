@@ -1,0 +1,34 @@
+---
+import Camera from './Camera.astro';
+import { ARTISTS } from '../data/site.js';
+---
+<section id="estudio">
+  <div class="band" style="padding-bottom:clamp(40px,6vw,72px)">
+    <h2>Los <em>artistas</em></h2>
+    <p class="lead">Dos maneras de tatuar, un mismo estudio. Elige con quién quieres hablar.</p>
+    <p class="hand" style="transform:rotate(-3deg);margin:14px 0 0 30%">↙ escríbele directamente</p>
+    <div class="artists" id="artists">
+      {ARTISTS.map((a) => (
+        <article class="artist">
+          <div class="phw"><span class="tape"></span><div class="ph"><div><Camera />Foto</div></div></div>
+          <div>
+            <h3>{a.name}</h3>
+            <p>{a.styles}<br />{a.bio}</p>
+            <div class="acts">
+              <button class="btn ghost" data-see={a.id}>Ver sus trabajos</button>
+              <button class="btn" data-ask={a.id}>Cuéntale tu idea</button>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+  <div class="studio">
+    <div class="ph"><div><Camera />Foto real del local</div></div>
+    <div class="txt">
+      <h2>El <em>estudio</em></h2>
+      <p>Un sitio tranquilo para diseñar contigo cada pieza antes de empezar.</p>
+      <p class="small">También hacemos piercing. Pregúntanos o pásate por el estudio.</p>
+    </div>
+  </div>
+</section>

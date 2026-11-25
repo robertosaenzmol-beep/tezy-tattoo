@@ -1,0 +1,62 @@
+---
+import ChipGroup from './ChipGroup.astro';
+---
+<section class="band" id="idea">
+  <div class="wrap">
+    <h2>Cuéntanos <em>tu idea</em></h2>
+    <p class="lead">Cuatro pasos, dos minutos. Con esto el artista ya puede darte presupuesto.</p>
+    <p class="hand" style="transform:rotate(-2deg);margin:12px 0 0">sin compromiso, palabra →</p>
+    <form id="f" novalidate>
+      <div class="prog" aria-hidden="true"><i id="pi"></i></div>
+      <div class="stepn" id="sn">Paso 1 de 4</div>
+
+      <div class="step on" data-s="1">
+        <p class="q">¿Qué te quieres tatuar?</p>
+        <div class="field"><textarea id="t-idea" placeholder="Ej.: una golondrina fine line en el antebrazo, con el nombre de mi madre debajo"></textarea></div>
+        <div class="field"><label class="l">Estilo (si lo tienes claro)</label><ChipGroup g="estilo" /></div>
+      </div>
+
+      <div class="step" data-s="2">
+        <p class="q">¿Dónde y de qué tamaño?</p>
+        <div class="field"><label class="l">Toca la zona (puedes elegir varias)</label>
+          <div class="bz" id="bz"><span class="bzl" id="bzl">Delante</span><span class="hand bzn" aria-hidden="true">arrastra para<br />ver la espalda ↻</span>
+            <div class="bzz" id="bzz"><div class="bzr" id="bzr"><div class="bzf f" id="bzf"></div><div class="bzf b" id="bzb"></div></div><div class="bzs"></div></div>
+          </div>
+          <div class="bzbar"><span class="bzcap" id="bzcap"></span><button type="button" class="btn ghost" id="bzflip">Ver espalda ↻</button></div>
+          <div class="bzsel" id="bzsel"></div>
+        </div>
+        <div class="field"><label class="l">Tamaño aproximado</label><ChipGroup g="tam" /></div>
+        <div class="field"><label class="l">¿Es tu primer tatuaje?</label><ChipGroup g="primero" /></div>
+      </div>
+
+      <div class="step" data-s="3">
+        <p class="q">Referencias y artista</p>
+        <div class="field">
+          <label class="drop" for="t-ref">
+            <input type="file" id="t-ref" accept="image/*" multiple />
+            <span>Sube fotos de referencia<br /><span class="small">Capturas, dibujos, la zona del cuerpo… hasta 5</span></span>
+          </label>
+          <div class="thumbs" id="thumbs"></div>
+        </div>
+        <div class="field"><label class="l">¿Con quién quieres tatuarte?</label><ChipGroup g="artista" /></div>
+      </div>
+
+      <div class="step" data-s="4">
+        <p class="q">¿Cómo te escribimos?</p>
+        <div class="field"><label class="l" for="t-nom">Nombre</label><input type="text" id="t-nom" autocomplete="given-name" /></div>
+        <div class="field"><label class="l" for="t-tel">Teléfono (WhatsApp)</label><input type="tel" id="t-tel" autocomplete="tel" inputmode="tel" placeholder="600 000 000" /></div>
+        <div class="field"><label class="l" for="t-ig">Instagram (opcional)</label><input type="text" id="t-ig" placeholder="@tuusuario" /></div>
+        <div class="field"><label class="l">¿Cómo nos has conocido?</label><ChipGroup g="origen" /></div>
+        <label class="check"><input type="checkbox" id="t-ok" /><span>Acepto que Tezy Tattoo use estos datos solo para responder a mi solicitud.</span></label>
+      </div>
+
+      <p class="err" id="err" role="alert"></p>
+      <div class="nav" id="nav">
+        <button type="button" class="btn ghost" id="back" style="visibility:hidden">Atrás</button>
+        <button type="submit" class="btn or" id="next">Siguiente</button>
+      </div>
+    </form>
+
+    <div class="done" id="done" aria-live="polite"></div>
+  </div>
+</section>

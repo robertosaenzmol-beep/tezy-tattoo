@@ -1,0 +1,13 @@
+---
+import { STUDIO } from '../data/site.js';
+---
+<section class="band" id="contacto">
+  <h2>Pásate o <em>escríbenos</em></h2>
+  <p class="small">Teléfono y dirección de su ficha pública. Instagram y horario, por confirmar con el estudio.</p>
+  <div class="rows">
+    <div class="row"><span>Teléfono</span><b>{STUDIO.phone}</b><a class="btn ghost" href={STUDIO.phoneHref}>Llamar</a></div>
+    <div class="row"><span>Instagram</span><b>{STUDIO.instagram}</b><a class="btn ghost" href={STUDIO.instagramUrl}>Ver perfil</a></div>
+    <div class="row"><span>Dirección</span><b>{STUDIO.address} · {STUDIO.postal} {STUDIO.city}</b><a class="btn ghost" href={STUDIO.mapsUrl}>Cómo llegar</a></div>
+    <div class="row"><span>Horario</span><b>{STUDIO.hours}</b><span></span></div>
+  </div>
+</section>

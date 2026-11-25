@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-tezy.jpg';
+---
+<section id="inicio">
+  <canvas id="smoke" aria-hidden="true"></canvas>
+  <canvas id="sparks" aria-hidden="true"></canvas>
+  <h1 class="word" id="word" aria-label="Tezy Tattoo"><span class="t1">Tezy</span><span class="t2">TATTOO</span></h1>
+  <div class="heroft">
+    <div class="meta"><Image src={logo} alt="Logo de Tezy Tattoo" width={116} height={116} loading="eager" /><p>Cuéntanos tu idea y te responde directamente el artista que la va a tatuar.</p></div>
+    <div class="acts">
+      <span class="hand anno-h" aria-hidden="true">empieza aquí <svg viewBox="0 0 52 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 4 C18 4 34 10 40 24 M40 24 L32 21 M40 24 L43 15"/></svg></span>
+      <button class="btn or" data-go="idea">Quiero tatuarme</button>
+      <button class="btn ghost" data-go="trabajos">Ver trabajos</button>
+    </div>
+  </div>
+</section>

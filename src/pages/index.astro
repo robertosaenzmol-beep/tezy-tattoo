@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import NavDots from '../components/NavDots.astro';
+import Hero from '../components/Hero.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Separator from '../components/Separator.astro';
+import Studio from '../components/Studio.astro';
+import IdeaForm from '../components/IdeaForm.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base>
+  <NavDots />
+  <Hero />
+  <Portfolio />
+  <Separator text="conoce a los artistas ↓" />
+  <Studio />
+  <Separator text="ahora te toca a ti ↓" style="margin-top:clamp(24px,4vw,48px)" />
+  <IdeaForm />
+  <Contact />
+  <Footer />
+  <script>
+    import '../scripts/main.js';
+  </script>
+</Base>

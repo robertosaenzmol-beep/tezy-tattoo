@@ -1,0 +1,8 @@
+---
+import { FORM_GROUPS } from '../data/site.js';
+const { g } = Astro.props;
+const items = FORM_GROUPS[g].map((x) => (Array.isArray(x) ? x : [x, x]));
+---
+<div class="wrapchips" data-g={g}>
+  {items.map(([v, l]) => <button type="button" class="chip" data-v={v} aria-pressed="false">{l}</button>)}
+</div>

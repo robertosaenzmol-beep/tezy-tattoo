@@ -1,0 +1,38 @@
+---
+import Camera from './Camera.astro';
+import { ARTISTS, STYLES, WORKS, artistName } from '../data/site.js';
+const fa = [['todos', 'Todos'], ...ARTISTS.map((a) => [a.id, a.name])];
+const fe = [['todos', 'Todos los estilos'], ...STYLES.map((s) => [s, s])];
+---
+<section class="band" id="trabajos">
+  <div class="head">
+    <div>
+      <h2>Trabajos <em>reales</em></h2>
+      <p class="hand" style="transform:rotate(-2deg);margin:4px 0 8px">¿te gusta uno? pídelo tal cual ↓</p>
+      <p class="small">Huecos listos para las fotos reales del estudio. Estilos de ejemplo.</p>
+    </div>
+    <div class="filters">
+      <div class="chips" id="fa" role="group" aria-label="Filtrar por artista">
+        {fa.map(([v, l], i) => <button type="button" class="chip" data-v={v} aria-pressed={i === 0 ? 'true' : 'false'}>{l}</button>)}
+      </div>
+      <div class="chips" id="fe" role="group" aria-label="Filtrar por estilo">
+        {fe.map(([v, l], i) => <button type="button" class="chip" data-v={v} aria-pressed={i === 0 ? 'true' : 'false'}>{l}</button>)}
+      </div>
+    </div>
+  </div>
+  <div class="grid" id="grid">
+    {WORKS.map((w, i) => (
+      <figure class="tile" data-a={w.artist} data-e={w.style} style={`--rt:${(((i * 37) % 7) - 3) * 0.7}deg;--ty:${((i * 13) % 5) * 3}px`}>
+        {i % 3 === 0 && <span class="tape"></span>}
+        <div class="in">
+          <div class="ph" style={`aspect-ratio:${w.ratio}`}><div><Camera />Foto real</div></div>
+          <figcaption class="cap">
+            <span>{artistName(w.artist)}<br />{w.style}</span>
+            <button type="button" data-like={i}>quiero algo así</button>
+          </figcaption>
+        </div>
+      </figure>
+    ))}
+  </div>
+  <p class="empty" id="empty">Todavía no hay trabajos con este filtro.</p>
+</section>
