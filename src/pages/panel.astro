@@ -1,0 +1,65 @@
+---
+import '@fontsource/archivo/400.css';
+import '@fontsource/archivo/500.css';
+import '@fontsource/archivo/700.css';
+import '@fontsource/archivo-black/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource/caveat/700.css';
+import '../styles/panel.css';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-tezy.jpg';
+import { USERS } from '../data/demo.js';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel · Tezy Tattoo</title>
+  <link rel="icon" href="/favicon.jpg">
+</head>
+<body>
+  <!-- LOGIN (demo) -->
+  <main class="login" id="login">
+    <form class="lcard" id="lform">
+      <Image src={logo} alt="Tezy Tattoo" width={128} height={128} class="llogo" loading="eager" />
+      <h1>Panel <em>de artistas</em></h1>
+      <p class="muted">Solo para el equipo de Tezy Tattoo.</p>
+      <label class="fl" for="lemail">Correo</label>
+      <select id="lemail" class="inp">
+        {USERS.map((u) => <option value={u.id}>{u.email}</option>)}
+      </select>
+      <label class="fl" for="lpass">Contraseña</label>
+      <input id="lpass" class="inp" type="password" value="demo-tezy" autocomplete="off" />
+      <button class="btn or" type="submit">Entrar</button>
+      <p class="hand lnote">demo: entra con cualquier usuario ↑</p>
+    </form>
+  </main>
+
+  <!-- APP -->
+  <div class="app" id="app" hidden>
+    <aside class="side">
+      <div class="brand"><Image src={logo} alt="" width={72} height={72} /><div><b>Tezy</b><span>Panel</span></div></div>
+      <nav class="menu" id="menu"></nav>
+      <div class="who">
+        <label class="fl" for="asuser">Ver como</label>
+        <select id="asuser" class="inp sm">
+          {USERS.map((u) => <option value={u.id}>{u.name}{u.role === 'admin' ? ' (todo el estudio)' : ''}</option>)}
+        </select>
+        <button class="link" id="logout" type="button">Cerrar sesión</button>
+      </div>
+    </aside>
+    <main class="main" id="main"></main>
+  </div>
+
+  <!-- Ficha lateral -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" tabindex="-1"></aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    import '../scripts/panel.js';
+  </script>
+</body>
+</html>
